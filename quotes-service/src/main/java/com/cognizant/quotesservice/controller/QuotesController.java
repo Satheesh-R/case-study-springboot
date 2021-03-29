@@ -25,7 +25,7 @@ public class QuotesController {
 	@Autowired
 	private QuotesService quotesService;
 	
-	@GetMapping("/getQuote")
+	@PostMapping("/getQuote")
 	public ResponseEntity<Quotes> getQuote(@RequestBody CustomerDetails customerDetails,
 			@RequestHeader("Authorization")String token) throws TokenInvalidException{
 		Quotes quotes = quotesService.getQuotes(customerDetails,token);

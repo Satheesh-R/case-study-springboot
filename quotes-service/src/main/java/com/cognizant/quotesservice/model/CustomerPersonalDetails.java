@@ -6,15 +6,18 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class CustomerPersonalDetails {
 	@NotBlank(message = "First name cannnot be empty or null")
 	@Size(min = 1,max = 50,message = "Length of firsname have to greater than 1 and lesser than 50")
@@ -36,4 +39,6 @@ public class CustomerPersonalDetails {
 	@Min(value = 1,message="Quote Amount cannot be lesser than 1")
 	@NotNull(message = "Quote amount cannot be empty or null")
 	private Long quoteAmount;
+	@NotNull(message = "Quote amount cannot be empty or null")
+	private Byte[] fileData;
 }

@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,7 @@ public class QuotesServiceImpl implements QuotesService {
 	@Autowired
 	private JwtUtil jwtUtil;
 	
+	@Cacheable(key = "#customerDetails.age",value="quotesCache")
 	public Quotes getQuotes(CustomerDetails customerDetails,final String token) throws TokenInvalidException {
 		boolean isValid = authenticationProxy.validateUser(token).getBody().getIsValid();
 		if(isValid) {
@@ -62,7 +64,7 @@ public class QuotesServiceImpl implements QuotesService {
 			QuoteDetails quoteDetails = new QuoteDetails(username,customerPersonalDetails.getFirstname(),
 					customerPersonalDetails.getLastname(),customerPersonalDetails.getGender(),customerPersonalDetails.getAge(),
 					customerPersonalDetails.getEmailid(),customerPersonalDetails.getMobileNumber(),
-					customerPersonalDetails.getQuoteAmount());
+					customerPersonalDetails.getQuoteAmount(),customerPersonalDetails.getFileData());
 			quotesRepository.save(quoteDetails);
 			return new Message(HttpStatus.OK,LocalDateTime.now(),"Quote saved successfully");
 			

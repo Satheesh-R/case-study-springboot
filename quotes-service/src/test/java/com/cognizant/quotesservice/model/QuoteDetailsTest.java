@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class QuoteDetailsTest {
 	private QuoteDetails quoteDetails1 = new QuoteDetails(); 
 	private QuoteDetails quoteDetails2 = new QuoteDetails("user","user","user","Male",20,"alex@abc.com",
-			9876543210L,10000L);
+			9876543210L,10000L,null);
 	@Test
 	public void quoteIdTest() {
 		quoteDetails1.setQuoteId(1L);
@@ -60,6 +60,12 @@ public class QuoteDetailsTest {
 	public void quoteAmountTest() {
 		quoteDetails1.setQuoteAmount(1000L);
 		assertEquals(1000L, quoteDetails1.getQuoteAmount());
+	}
+	
+	@Test
+	public void fileTest() {
+		quoteDetails1.setFileData(null);
+		assertEquals(null, quoteDetails1.getFileData());
 	}
 	
 	@Test

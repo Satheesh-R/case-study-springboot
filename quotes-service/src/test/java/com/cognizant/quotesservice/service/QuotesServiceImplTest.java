@@ -96,12 +96,13 @@ public class QuotesServiceImplTest {
 	@Test
 	public void saveQuoteTest() throws TokenInvalidException {
 		CustomerPersonalDetails customerPersonalDetails = new CustomerPersonalDetails("Harry", "Potter", 
-				"Male", 20, "harry@hogwards.com", 9876543210L, 1000L);
+				"Male", 20, "harry@hogwards.com", 9876543210L, 1000L,null);
 		ValidationResponse validationResponse = new ValidationResponse("Harry", true);
 		QuoteDetails quoteDetails = new QuoteDetails("Harry", customerPersonalDetails.getFirstname(), 
 				customerPersonalDetails.getLastname(), customerPersonalDetails.getGender(), 
 				customerPersonalDetails.getAge(), customerPersonalDetails.getEmailid(), 
-				customerPersonalDetails.getMobileNumber(), customerPersonalDetails.getQuoteAmount());
+				customerPersonalDetails.getMobileNumber(), customerPersonalDetails.getQuoteAmount(),
+				customerPersonalDetails.getFileData());
 		ResponseEntity<ValidationResponse> response = new ResponseEntity<ValidationResponse>(validationResponse, HttpStatus.OK);
 		when(authenticationProxy.validateUser("Bearer token")).thenReturn(response);
 		when(quotesRepository.save(quoteDetails)).thenReturn(quoteDetails);
@@ -111,13 +112,14 @@ public class QuotesServiceImplTest {
 	@Test
 	public void saveQuoteTestValidationFail() throws TokenInvalidException {
 		CustomerPersonalDetails customerPersonalDetails = new CustomerPersonalDetails("Harry", "Potter", 
-				"Male", 20, "harry@hogwards.com", 9876543210L, 1000L);
+				"Male", 20, "harry@hogwards.com", 9876543210L, 1000L,null);
 		ValidationResponse validationResponse = new ValidationResponse("Harry", false);
 		ResponseEntity<ValidationResponse> response = new ResponseEntity<ValidationResponse>(validationResponse, HttpStatus.OK);
 		QuoteDetails quoteDetails = new QuoteDetails("Harry", customerPersonalDetails.getFirstname(), 
 				customerPersonalDetails.getLastname(), customerPersonalDetails.getGender(), 
 				customerPersonalDetails.getAge(), customerPersonalDetails.getEmailid(), 
-				customerPersonalDetails.getMobileNumber(), customerPersonalDetails.getQuoteAmount());
+				customerPersonalDetails.getMobileNumber(), customerPersonalDetails.getQuoteAmount(),
+				customerPersonalDetails.getFileData());
 		when(authenticationProxy.validateUser("Bearer Token")).thenReturn(response);
 		assertThrows(TokenInvalidException.class,() -> quotesServiceImpl.saveQuote(customerPersonalDetails, "Bearer Token"));
 	}
@@ -126,15 +128,16 @@ public class QuotesServiceImplTest {
 	public void getAllQuotesByUserIdTest() throws TokenInvalidException {
 		ValidationResponse validationResponse = new ValidationResponse("Harry", true);
 		CustomerPersonalDetails customerPersonalDetails = new CustomerPersonalDetails("Harry", "Potter", 
-				"Male", 20, "harry@hogwards.com", 9876543210L, 1000L);
+				"Male", 20, "harry@hogwards.com", 9876543210L, 1000L,null);
 		QuoteDetails quoteDetails1 = new QuoteDetails("Harry", customerPersonalDetails.getFirstname(), 
 				customerPersonalDetails.getLastname(), customerPersonalDetails.getGender(), 
 				customerPersonalDetails.getAge(), customerPersonalDetails.getEmailid(), 
-				customerPersonalDetails.getMobileNumber(), customerPersonalDetails.getQuoteAmount());
+				customerPersonalDetails.getMobileNumber(), customerPersonalDetails.getQuoteAmount(),
+				customerPersonalDetails.getFileData());
 		QuoteDetails quoteDetails2 = new QuoteDetails("Harry", customerPersonalDetails.getFirstname(), 
 				customerPersonalDetails.getLastname(), customerPersonalDetails.getGender(), 
 				customerPersonalDetails.getAge(), customerPersonalDetails.getEmailid(), 
-				customerPersonalDetails.getMobileNumber(), 2000L);
+				customerPersonalDetails.getMobileNumber(), 2000L,customerPersonalDetails.getFileData());
 		List<QuoteDetails> quotesDetailsList = new ArrayList<QuoteDetails>();
 		quotesDetailsList.add(quoteDetails1);
 		quotesDetailsList.add(quoteDetails2);
@@ -148,15 +151,16 @@ public class QuotesServiceImplTest {
 	public void getAllQuotesByUserIdTestValidationFail() throws TokenInvalidException {
 		ValidationResponse validationResponse = new ValidationResponse("Harry", false);
 		CustomerPersonalDetails customerPersonalDetails = new CustomerPersonalDetails("Harry", "Potter", 
-				"Male", 20, "harry@hogwards.com", 9876543210L, 1000L);
+				"Male", 20, "harry@hogwards.com", 9876543210L, 1000L,null);
 		QuoteDetails quoteDetails1 = new QuoteDetails("Harry", customerPersonalDetails.getFirstname(), 
 				customerPersonalDetails.getLastname(), customerPersonalDetails.getGender(), 
 				customerPersonalDetails.getAge(), customerPersonalDetails.getEmailid(), 
-				customerPersonalDetails.getMobileNumber(), customerPersonalDetails.getQuoteAmount());
+				customerPersonalDetails.getMobileNumber(), customerPersonalDetails.getQuoteAmount(),
+				customerPersonalDetails.getFileData());
 		QuoteDetails quoteDetails2 = new QuoteDetails("Harry", customerPersonalDetails.getFirstname(), 
 				customerPersonalDetails.getLastname(), customerPersonalDetails.getGender(), 
 				customerPersonalDetails.getAge(), customerPersonalDetails.getEmailid(), 
-				customerPersonalDetails.getMobileNumber(), 2000L);
+				customerPersonalDetails.getMobileNumber(), 2000L,customerPersonalDetails.getFileData());
 		List<QuoteDetails> quotesDetailsList = new ArrayList<QuoteDetails>();
 		quotesDetailsList.add(quoteDetails1);
 		quotesDetailsList.add(quoteDetails2);

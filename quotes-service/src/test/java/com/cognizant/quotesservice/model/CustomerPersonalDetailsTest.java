@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 public class CustomerPersonalDetailsTest {
 	private CustomerPersonalDetails customerPersonalDetails = new CustomerPersonalDetails();
+	private CustomerPersonalDetails customerPersonalDetails2 = new CustomerPersonalDetails("user", 
+			"user", "Male", 21, "user@user.com", 98765432210L, 100L, null);
 
 	@Test
 	public void testFirstName() {
@@ -47,5 +49,17 @@ public class CustomerPersonalDetailsTest {
 	public void testQuoteAmount() {
 		customerPersonalDetails.setQuoteAmount(1000000L);;
 		assertEquals(1000000L, customerPersonalDetails.getQuoteAmount());
+	}
+	
+	@Test
+	public void testFile() {
+		customerPersonalDetails.setFileData(null);
+		assertEquals(null, customerPersonalDetails.getFileData());
+	}
+	
+	@Test
+	public void testToString() {
+		String toStringResult = customerPersonalDetails2.toString();
+		assertEquals(toStringResult, customerPersonalDetails2.toString());
 	}
 }

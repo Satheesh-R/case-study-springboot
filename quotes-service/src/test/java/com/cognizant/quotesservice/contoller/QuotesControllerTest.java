@@ -49,7 +49,7 @@ public class QuotesControllerTest {
 	@Test
 	public void testSaveQuote() throws TokenInvalidException {
 		CustomerPersonalDetails customerPersonalDetails = new CustomerPersonalDetails("Harry", "Potter", 
-				"Male", 20, "harry@hogwards.com", 9876543210L, 1000L);
+				"Male", 20, "harry@hogwards.com", 9876543210L, 1000L,null);
 		Message message = new Message(HttpStatus.ACCEPTED,LocalDateTime.now(),"Quote Saved Successfully");
 		when(quotesServiceImpl.saveQuote(customerPersonalDetails, "Bearer token")).thenReturn(message);
 		assertEquals(HttpStatus.OK, quotesController.saveQuote(customerPersonalDetails, "Bearer token").getStatusCode());
@@ -58,15 +58,16 @@ public class QuotesControllerTest {
 	@Test
 	public void testGetAllQuotes() throws TokenInvalidException {
 		CustomerPersonalDetails customerPersonalDetails = new CustomerPersonalDetails("Harry", "Potter", 
-				"Male", 20, "harry@hogwards.com", 9876543210L, 1000L);
+				"Male", 20, "harry@hogwards.com", 9876543210L, 1000L,null);
 		QuoteDetails quoteDetails1 = new QuoteDetails("Harry", customerPersonalDetails.getFirstname(), 
 				customerPersonalDetails.getLastname(), customerPersonalDetails.getGender(), 
 				customerPersonalDetails.getAge(), customerPersonalDetails.getEmailid(), 
-				customerPersonalDetails.getMobileNumber(), customerPersonalDetails.getQuoteAmount());
+				customerPersonalDetails.getMobileNumber(), customerPersonalDetails.getQuoteAmount(),
+				customerPersonalDetails.getFileData());
 		QuoteDetails quoteDetails2 = new QuoteDetails("Harry", customerPersonalDetails.getFirstname(), 
 				customerPersonalDetails.getLastname(), customerPersonalDetails.getGender(), 
 				customerPersonalDetails.getAge(), customerPersonalDetails.getEmailid(), 
-				customerPersonalDetails.getMobileNumber(), 2000L);
+				customerPersonalDetails.getMobileNumber(), 2000L,customerPersonalDetails.getFileData());
 		List<QuoteDetails> quotesDetailsList = new ArrayList<QuoteDetails>();
 		quotesDetailsList.add(quoteDetails1);
 		quotesDetailsList.add(quoteDetails2);
