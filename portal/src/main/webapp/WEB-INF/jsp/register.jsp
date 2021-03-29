@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,11 +30,6 @@ a:hover, a:active, a:focus {
 	color: #2dca98;
 	outline: none;
 	text-decoration: none;
-}
-
-p {
-	padding: 0;
-	margin: 0 0 30px 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -206,34 +202,18 @@ div.form {
 	text-align: center;
 }
 
-form {
-	display: inline-block;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: left;
-	margin-top: 2%;
+section {
+	float: left;
+	width: 60%;
+	padding-left: 150px;
+}
+
+.right {
+	float: right;
+	width: 40%;
+	padding-left: 10px;
 }
 </style>
-<script type="text/javascript">
-	function validate() {
-		var age = document.quoteForm.age.value;
-		var drinker = document.quoteForm.drinker.value;
-		var smoker = document.quoteForm.smoker.value;
-		var status = false;
-		if (age===null || age==='') {
-			console.log(age);
-			document.getElementById("ageMessage").innerHTML = "<b><p>Age cannot be empty</p></b>"
-		} else if (drinker=== null || drinker === '') {
-			console.log(drinker);
-			document.getElementById("drinkerMessage").innerHTML = "<b><p>Must select YES or NO</p></b>"
-		} else if (smoker===null || smoker === '') {
-			document.getElementById("smokerMessage").innerHTML = "<b><p>Must select YES or NO</p></b>"
-		} else {
-			status = true;
-		}
-		return status;
-	}
-</script>
 <!-- Google Fonts -->
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700"
@@ -249,6 +229,51 @@ form {
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+<script type="text/javascript">
+	function validate() {
+		var status = false;
+		var genders = document.getElementsByName("gender");
+		var firstname = document.CustomerPersonalForm.firstname.value;
+		var lastname = document.CustomerPersonalForm.lastname.value;
+		var age = document.CustomerPersonalForm.age.value;
+		var emailid = document.CustomerPersonalForm.emailid.value;
+		var mobileNumber = document.CustomerPersonalForm.mobileNumber.value;
+		var quoteAmount = document.CustomerPersonalForm.quoteAmount.value;
+		var letters = /^[A-Za-z]+$/;
+		if (firstname === null || firstname === ''
+				|| !(firstname.match(letters)) || firstname.length <= 2) {
+			document.getElementById("firstname").innerHTML = "<b><p>Firstname cannot be empty or must be words</p></b>";
+			status = false;
+		} else if (lastname === null || lastname === ''
+				|| !(lastname.match(letters)) || lastname.length <= 2) {
+			document.getElementById("lastname").innerHTML = "<b><p>Lastname cannot be empty or must be words</p></b>";
+			status = false;
+		} else if (genders[0].checked == false && genders[1].checked == false) {
+			document.getElementById("gender").innerHTML = "<b><p>Must select one of the genders</p></b>";
+			status = false;
+		} else if (lastname === null || lastname === '') {
+			document.getElementById("lastname").innerHTML = "<b><p>Lastname cannot be empty</p></b>";
+			status = false;
+		} else if (age === null || age === '') {
+			document.getElementById("age").innerHTML = "<b><p>Age cannot be empty</p></b>";
+			status = false;
+		} else if (emailid === null || emailid === '') {
+			document.getElementById("emailId").innerHTML = "<b><p>Emailid cannot be empty and must be valid one</p></b>";
+			status = false;
+		} else if (mobileNumber === null || mobileNumber === ''
+				|| !(mobileNumber.length === 10)) {
+			console.log(mobileNumber);
+			document.getElementById("mobilenumber").innerHTML = "<b><p>Mobile number cannot be empty and must be valid one</p></b>";
+			status = false;
+		} else if (quoteAmount === null || quoteAmount === '') {
+			document.getElementById("quoteamount").innerHTML = "<b><p>Quote Amount cannot be empty</p></b>";
+			status = false;
+		} else {
+			status = true;
+		}
+		return status;
+	}
+</script>
 <body>
 	<!-- ======= Header ======= -->
 	<header id="header">
@@ -268,57 +293,72 @@ form {
 		</div>
 	</header>
 	<!-- End Header -->
-	<div>
-		<section class="jumbotron jumbotron-fluid">
-			<div class="form p-3">
-				<form action="/quoteResult" method="get" model="CustomerDetails"
-					name="quoteForm" onsubmit="return validate()">
-					<h4 class="text-primary">Get a quote!</h4>
-					<div class="form-group">
-						<label for="age">Age </label> <input type="number"
-							placeholder="Enter your age" min=1 max=100 class="form-control"
-							name="age" /> <span class="text-danger" id="ageMessage"></span>
+	<section>
+		<div class="container p-3">
+			<form:form method="POST" action="/registerCustomer"
+				modelAttribute="customerRegistrationDetails"
+				name="CustomerRegistrationForm" onsubmit="return validate()">
+				<h5>Welcome</h5>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<form:label path="firstname">Firstname</form:label>
+						<form:input type="text" class="form-control" name="firstname"
+							path="firstname"></form:input>
+						<span class="text-danger" id="firstname"></span>
 					</div>
-					<p>Are you a drinker or not?</p>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="drinker"
-							id="inlineRadio1" value="YES"> <label
-							class="form-check-label" for="inlineRadio1">YES</label>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<form:label path="lastname">Lastname</form:label>
+						<form:input type="text" class="form-control" name="lastname"
+							path="lastname"></form:input>
+						<span class="text-danger" id="lastname"></span>
 					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="drinker"
-							id="inlineRadio2" value="NO"> <label
-							class="form-check-label" for="inlineRadio2">NO</label>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<form:label path="country">Country</form:label>
+						<form:select path="country">
+							<form:option value="NONE"> --SELECT--</form:option>
+							<form:options items="${countryList}"></form:options>
+						</form:select>
 					</div>
-					<span class="text-danger" id="drinkerMessage"></span>
-					<p>Are you a smoker or not?</p>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="smoker"
-							id="inlineRadio3" value="YES"> <label
-							class="form-check-label" for="inlineRadio3">YES</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="smoker"
-							id="inlineRadio4" value="NO"> <label
-							class="form-check-label" for="inlineRadio4">NO</label>
-					</div>
-					<span class="text-danger" id="smokerMessage"></span>
-					<div class="fornm-group">
-						<input type="submit" class="btn btn-primary" />
-					</div>
-				</form>
+				</div>
+	</section>
+	<aside class="right">
+		<div class="container p-3">
+			<div class="form-row">
+				<div class="form-group col-md-8">
+					<form:label path="customerId">Customerid</form:label>
+					<form:input type="text" class="form-control" name="customerId"
+						path="customerId" />
+					<span class="text-danger" id="customerId">${userMessage}</span>
+				</div>
 			</div>
-		</section>
-		<footer id="footer">
-			<div class="footer-top">
-				<div class="container"></div>
+			<div class="form-row">
+				<div class="form-group col-md-8">
+					<form:label path="password">Password</form:label>
+					<form:input type="password" class="form-control" name="password"
+						path="password" />
+					<span class="text-danger" id="password"></span>
+				</div>
 			</div>
+			<div class="form-row">
+				<div class="col-sm-10">
+					<button type="submit" class="btn btn-success">Save</button>
+				</div>
+			</div>
+			</form:form>
+	</aside>
+	<footer id="footer">
+		<div class="footer-top">
+			<div class="container"></div>
+		</div>
 
-			<div class="container">
-				<div class="credits">2021-2022</div>
-			</div>
-		</footer>
-		<!-- End Footer -->
+		<div class="container">
+			<div class="credits">2021-2022</div>
+		</div>
+	</footer>
+	<!-- End Footer -->
 	</div>
-</body>
 </html>

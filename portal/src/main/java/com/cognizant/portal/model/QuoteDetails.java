@@ -1,16 +1,17 @@
 package com.cognizant.portal.model;
 
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class CustomerPersonalDetails {
+@ToString
+public class QuoteDetails {
+	private Long quoteId;
+	private String username;
 	private String firstname;
 	private String lastname;
 	private String gender;
@@ -18,5 +19,4 @@ public class CustomerPersonalDetails {
 	private String emailid;
 	private Long mobileNumber;
 	private Long quoteAmount;
-	private byte[] fileData;
 }

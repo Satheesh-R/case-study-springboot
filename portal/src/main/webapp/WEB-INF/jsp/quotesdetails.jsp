@@ -1,28 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-<title>Insureity</title>
-<meta content="" name="description">
-<meta content="" name="keywords">
-
-
-<!-- Google Fonts -->
-<link
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700"
-	rel="stylesheet">
-
-<!-- Vendor CSS Files -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	crossorigin="anonymous">
-
-<!-- Template Main CSS File -->
-<style>
+<meta charset="ISO-8859-1">
+<title>Here is the quotes by you!</title>
+<style type="text/css">
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -58,6 +43,10 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 400;
 	margin: 0 0 20px 0;
 	padding: 0;
+}
+
+.center {
+	text-align: center;
 }
 
 /*--------------------------------------------------------------
@@ -211,11 +200,22 @@ h1, h2, h3, h4, h5, h6 {
 	color: #ccc;
 }
 </style>
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700"
+	rel="stylesheet">
 
+<!-- Vendor CSS Files -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-
 <body>
-
 	<!-- ======= Header ======= -->
 	<header id="header">
 		<div class="container">
@@ -234,73 +234,54 @@ h1, h2, h3, h4, h5, h6 {
 		</div>
 	</header>
 	<!-- End Header -->
-	<div class="flex-wrapper">
-		<!-- ======= Start Card ======= -->
-		<section class="subscribe">
-			<div class="container">
-				<div class="row" id="row1">
-					<div class="col-sm-3">
-						<div class="card">
-							<div class="card-body">
-								<a href="/getQuote"> <img
-									src="https://as2.ftcdn.net/jpg/00/24/87/83/500_F_24878378_YMHC6vpRLxYKGLW0UvjBzDYeBJVYINth.jpg"
-									class="card-img-top" alt="GETQUOTE.png"></a>
-								<div id="button">
-									<a href="/getQuote" class="btn btn-primary">GET A QUOTE</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-3">
-						<div class="card">
-							<div class="card-body">
-								<a href="/retrieveQuote"> <img
-									src="https://cdn1.iconfinder.com/data/icons/creative-finance-pack-ii/512/30-512.png"
-									class="card-img-top" alt="RETRIEVEQUOTE.png"></a>
-								<div id="button">
-									<a href="/retrieveQuote" class="btn btn-primary">RETRIEVE
-										QUOTE</a>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-
-			</div>
-		</section>
-		<!-- ======= End Card ======= -->
-
-		<!-- ======= Footer ======= -->
-		<footer id="footer">
-			<div class="footer-top">
-				<div class="container"></div>
-			</div>
-
-			<div class="container">
-				<div class="credits">2021-2022</div>
-			</div>
-		</footer>
-		<!-- End Footer -->
-	</div>
-	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
-	<!-- Vendor JS Files -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-		crossorigin="anonymous"></script>
-
-	<script>
-		
-	</script>
+	<section>
+		<div>
+			<table class="table table-hover">
+				<thead class="table-primary">
+					<th>Quote ID</th>
+					<th>Age</th>
+					<th>Email id</th>
+					<th>Firstname</th>
+					<th>Lastname</th>
+					<th>Gender</th>
+					<th>Mobile Number</th>
+					<th>Quote Amount</th>
+				</thead>
+				<tbody>
+					<c:if test="${fn:length(quotesDetailsList) == 0}">
+						<tr>
+							<td colspan="8" class="center">No quote has been submitted
+								by you!How about creating some <a class="btn btn-success"
+								href="/getQuote">Submit Quote</a>
+							</td>
+						</tr>
+					</c:if>
+					<c:if test="${fn:length(quotesDetailsList) != 0}">
+						<c:forEach items="${quotesDetailsList}" var="quoteDetails">
+							<tr>
+								<td>${quoteDetails.quoteId}</td>
+								<td>${quoteDetails.age}</td>
+								<td>${quoteDetails.emailid}</td>
+								<td>${quoteDetails.firstname}</td>
+								<td>${quoteDetails.lastname}</td>
+								<td>${quoteDetails.gender}</td>
+								<td>${quoteDetails.mobileNumber}</td>
+								<td>${quoteDetails.quoteAmount}</td>
+							</tr>
+						</c:forEach>
+					</c:if>
+				</tbody>
+			</table>
+		</div>
+	</section>
+	<footer id="footer">
+		<div class="footer-top">
+			<div class="container"></div>
+		</div>
+		<div class="container">
+			<div class="credits">2020-2021</div>
+		</div>
+	</footer>
+	<!-- End Footer -->
 </body>
-
 </html>

@@ -228,6 +228,52 @@ section {
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+<script type="text/javascript">
+	function validate() {
+		var status = false;
+		var genders = document.getElementsByName("gender");
+		var firstname = document.CustomerPersonalForm.firstname.value;
+		var lastname = document.CustomerPersonalForm.lastname.value;
+		var age = document.CustomerPersonalForm.age.value;
+		var emailid = document.CustomerPersonalForm.emailid.value;
+		var mobileNumber = document.CustomerPersonalForm.mobileNumber.value;
+		var quoteAmount = document.CustomerPersonalForm.quoteAmount.value;
+		var letters = /^[A-Za-z]+$/;
+		if (firstname === null || firstname === ''
+				|| !(firstname.match(letters)) || firstname.length <= 2) {
+			console.log(firstname);
+			document.getElementById("firstname").innerHTML = "<b><p>Firstname cannot be empty or must be words</p></b>";
+			status = false;
+		} else if (lastname === null || lastname === ''
+				|| !(lastname.match(letters)) || lastname.length <= 2) {
+			document.getElementById("lastname").innerHTML = "<b><p>Lastname cannot be empty or must be words</p></b>";
+			status = false;
+		} else if (genders[0].checked == false && genders[1].checked == false) {
+			document.getElementById("gender").innerHTML = "<b><p>Must select one of the genders</p></b>";
+			status = false;
+		} else if (lastname === null || lastname === '') {
+			document.getElementById("lastname").innerHTML = "<b><p>Lastname cannot be empty</p></b>";
+			status = false;
+		} else if (age === null || age === '') {
+			document.getElementById("age").innerHTML = "<b><p>Age cannot be empty</p></b>";
+			status = false;
+		} else if (emailid === null || emailid === '') {
+			document.getElementById("emailId").innerHTML = "<b><p>Emailid cannot be empty and must be valid one</p></b>";
+			status = false;
+		} else if (mobileNumber === null || mobileNumber === ''
+				|| !(mobileNumber.length === 10)) {
+			console.log(mobileNumber);
+			document.getElementById("mobilenumber").innerHTML = "<b><p>Mobile number cannot be empty and must be valid one</p></b>";
+			status = false;
+		} else if (quoteAmount === null || quoteAmount === '') {
+			document.getElementById("quoteamount").innerHTML = "<b><p>Quote Amount cannot be empty</p></b>";
+			status = false;
+		} else {
+			status = true;
+		}
+		return status;
+	}
+</script>
 <body>
 	<!-- ======= Header ======= -->
 	<header id="header">
@@ -250,14 +296,14 @@ section {
 	<section>
 		<div class="container p-3">
 			<form method="POST" action="/submitQuote"
-				model="CustomerPersonalDetails" name="CustomerPersonalForm"
-				onsubmit="return validate()">
+				model="CustomerDetailsProxy" name="CustomerPersonalForm"
+				onsubmit="return validate()" enctype="multipart/form-data">
 				<h5>Submit a quote!</h5>
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="firstname">Firstname</label> <input type="text"
 							class="form-control" name="firstname"> <span
-							class="text-danger" id="name"></span>
+							class="text-danger" id="firstname"></span>
 					</div>
 				</div>
 				<div class="form-row">
@@ -268,46 +314,55 @@ section {
 					</div>
 				</div>
 				<label>Gender:
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="gender"
-						id="inlineRadio1" value="Male"> <label
-						class="form-check-label" for="inlineRadio1">Male</label>
-				</div>
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="gender"
-						id="inlineRadio2" value="Female"> <label
-						class="form-check-label" for="inlineRadio2">Female</label>
-				</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="gender"
+							id="inlineRadio1" value="Male"> <label
+							class="form-check-label" for="inlineRadio1">Male</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="gender"
+							id="inlineRadio2" value="Female"> <label
+							class="form-check-label" for="inlineRadio2">Female</label> <span
+							class="text-danger" id="gender" style="margin-top: 17px"></span>
+					</div>
 				</label>
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="age">Age</label> <input type="number"
-							class="form-control" name="age" min=1 max=100> <span
-							class="text-danger" id="pan"></span>
+							class="form-control" name="age" min=1 max=100 value="${quote.age}" readonly> <span
+							class="text-danger" id="age"></span>
 					</div>
 				</div>
 	</section>
 	<aside class="right">
 		<div class="container p-3">
 			<div class="form-row">
-					<div class="form-group col-md-8">
-						<label for="emailId">Email id</label> <input
-							type="email" class="form-control" name="emailid">
-						<span class="text-danger" id="emailId"></span>
-					</div>
+				<div class="form-group col-md-8">
+					<label for="emailId">Email id</label> <input type="email"
+						class="form-control" name="emailid"> <span
+						class="text-danger" id="emailId"></span>
 				</div>
+			</div>
 			<div class="form-row">
 				<div class="form-group col-md-8">
-					<label for="mobileNumber">Mobile number</label> <input type="number"
-						class="form-control" name="mobileNumber"> <span
-						class="text-danger" id="mobileNumber"></span>
+					<label for="mobileNumber">Mobile number</label> <input
+						type="number" class="form-control" name="mobileNumber"> <span
+						class="text-danger" id="mobilenumber"></span>
 				</div>
 			</div>
 			<div class="form-row mb-2">
 				<div class="form-group col-md-8">
 					<label for=""quoteAmount"">Quote Amount</label> <input
-						type="number" min=0 class="form-control" name="quoteAmount">
-					<span class="text-danger" id="capital"></span>
+						type="number" min=0 class="form-control" name="quoteAmount"
+						value="${quote.quoteAmount }" readonly> <span
+						class="text-danger" id="quoteamount"></span>
+				</div>
+			</div>
+			<div class="form-row mb-2">
+				<div class="form-group col-md-8">
+					<label for=""proofOfQuote"">Id proof</label> <input type="file"
+						class="form-control-file" id="proofOfQuote" name="fileData"
+						required> <span class="text-danger" id="proofOfQuote"></span>
 				</div>
 			</div>
 			<div class="form-row">

@@ -11,4 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Quotes {
 	private Long quoteAmount;
+	private int age;
 }

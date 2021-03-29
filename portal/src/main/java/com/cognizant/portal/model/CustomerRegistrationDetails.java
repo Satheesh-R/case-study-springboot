@@ -1,9 +1,5 @@
 package com.cognizant.portal.model;
 
-import java.time.LocalDateTime;
-
-import org.springframework.http.HttpStatus;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,8 +11,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Message {
-	private HttpStatus status;
-	private LocalDateTime timestamp;
-	private String message;
+public class CustomerRegistrationDetails {
+	private String customerId;
+	private String password;
+	private String firstname;
+	private String lastname;
+	private String country;
 }

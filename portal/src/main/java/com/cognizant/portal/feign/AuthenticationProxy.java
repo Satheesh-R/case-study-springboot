@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestHeader;
 
 import com.cognizant.portal.model.AuthenticationRequest;
 import com.cognizant.portal.model.AuthenticationResponse;
+import com.cognizant.portal.model.CustomerRegistrationDetails;
+import com.cognizant.portal.model.Message;
 import com.cognizant.portal.model.ValidationResponse;
 
 
@@ -18,4 +20,6 @@ public interface AuthenticationProxy {
 	public ResponseEntity<ValidationResponse> validateUser(@RequestHeader("Authorization") final String token);
 	@PostMapping("/authenticate")
 	public ResponseEntity<AuthenticationResponse> authenticateUser(@RequestBody AuthenticationRequest authenticationRequest);
+	@PostMapping("/registerCustomer")
+	public ResponseEntity<Message> registerCustomer(@RequestBody CustomerRegistrationDetails customerDetails);
 }

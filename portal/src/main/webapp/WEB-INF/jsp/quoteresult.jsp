@@ -180,13 +180,11 @@ h1, h2, h3, h4, h5, h6 {
 #footer {
 	background: rgba(19, 23, 26, 0.9);
 	color: #fff;
-	font-size: 14px;
 	position: fixed;
-    padding: 10px 10px 0px 10px;
-    bottom: 0;
-    width: 100%;
-   /* Height of the footer*/ 
-    height: 40px;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
 }
 
 #footer .credits {
@@ -244,14 +242,15 @@ h1, h2, h3, h4, h5, h6 {
 		<section>
 		<div class="conatiner m-3">
 			<p class="text-success font-weight-bold">Here is your quote!</p>
-			<form method="GET" >
+			<form method="POST"  action="/submitNewQuote" model="Quotes">
 				<div class="form-row">
 		                <div class="form-group col-md-5">
 		                  <label for="quoteAmount"><b>Amount</b></label>
 		                  <input type="text" class="form-control" value="${quote.quoteAmount}" name="quoteAmount"  readonly>
+		                  <input type="hidden" class="form-control" value="${age}" name="age">
 		                </div>
 		            </div>		
-		  			<a href="/dashboard" class="btn btn-primary" >Back</a>
+		  			<input type="submit" class="btn btn-primary" value="Submit Quote"/>
 	  		</form>
   		</div>
 		</section>
