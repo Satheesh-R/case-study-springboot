@@ -78,7 +78,7 @@ public class AuthenticationControllerTest {
 	
 	@Test
 	public void testAddcustomer() {
-		CustomerDetails customerDetails = new CustomerDetails("Jack", "pass123", "Jack", "Hertz");
+		CustomerDetails customerDetails = new CustomerDetails("Jack", "pass123", "Jack", "Hertz","IND");
 		Message message = new Message(HttpStatus.OK,LocalDateTime.now(),"User registered successfully");
 		when(customerServiceImpl.addCustomer(customerDetails)).thenReturn(message);
 		assertEquals(HttpStatus.OK,authenticationController.registerCustomer(customerDetails).getStatusCode());

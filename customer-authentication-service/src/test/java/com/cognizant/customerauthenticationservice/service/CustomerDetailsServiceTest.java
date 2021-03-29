@@ -25,7 +25,7 @@ public class CustomerDetailsServiceTest {
 	
 	@Test
 	public void testLoadUserName() {
-		CustomerDetails customerDetails = new CustomerDetails("Harry","pass123","Harry","Potter");
+		CustomerDetails customerDetails = new CustomerDetails("Harry","pass123","Harry","Potter","IND");
 		UserDetails value = new User(customerDetails.getCustomerId(),customerDetails.getPassword(), new ArrayList<>());
 		when(customerService.findByUsername("Harry")).thenReturn(customerDetails);
 		assertEquals(value,customerDetailsService.loadUserByUsername("Harry"));

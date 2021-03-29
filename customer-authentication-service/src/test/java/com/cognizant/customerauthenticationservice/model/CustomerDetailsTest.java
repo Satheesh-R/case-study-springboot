@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 public class CustomerDetailsTest {
 	private CustomerDetails customerDetails1 = new CustomerDetails();
-	private CustomerDetails customerDetails2 = new CustomerDetails("User", "User123", "User", "User");
+	private CustomerDetails customerDetails2 = new CustomerDetails("User", "User123", "User", "User","IND");
 	
 	@Test
 	public void testUsername() {
@@ -30,6 +30,12 @@ public class CustomerDetailsTest {
 	public void testLastname() {
 		customerDetails1.setLastname("UserLast");
 		assertEquals("UserLast", customerDetails1.getLastname());
+	}
+	
+	@Test
+	public void testCountry() {
+		customerDetails1.setCountry("IND");
+		assertEquals("IND", customerDetails1.getCountry());
 	}
 	
 	@Test

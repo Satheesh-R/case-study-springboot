@@ -37,7 +37,7 @@ public class CustomerServiceImplTest {
 	
 	@Test
 	public void testfindByUsername() {
-		CustomerDetails customerDetails = new CustomerDetails("Ron","pass123","Ron","Wesley");
+		CustomerDetails customerDetails = new CustomerDetails("Ron","pass123","Ron","Wesley","IND");
 		when(customerRepository.findById("Ron")).thenReturn(Optional.of(customerDetails));
 		assertEquals(customerDetails,customerServiceImpl.findByUsername("Ron"));
 	}
@@ -58,7 +58,7 @@ public class CustomerServiceImplTest {
 	@Test
 	public void testAuthenticate() {
 		AuthenticationRequest authenticationRequest=new AuthenticationRequest("admin","admin");
-		CustomerDetails customer = new CustomerDetails("admin", "admin",null,null);
+		CustomerDetails customer = new CustomerDetails("admin", "admin",null,null,"IND");
 		UserDetails loadUserByUsername = userDetailsService.loadUserByUsername("admin");
 		UserDetails value = new User(customer.getCustomerId(),customer.getPassword(), new ArrayList<>());
 		when( userDetailsService.loadUserByUsername("admin")).thenReturn(value);
@@ -69,7 +69,7 @@ public class CustomerServiceImplTest {
 	@Test
 	public void testAuthenticateFail() {
 		AuthenticationRequest authenticationRequest=new AuthenticationRequest("admin","admin");
-		CustomerDetails customer = new CustomerDetails("admin", "admin",null,null);
+		CustomerDetails customer = new CustomerDetails("admin", "admin",null,null,"IND");
 		UserDetails loadUserByUsername = userDetailsService.loadUserByUsername("admin");
 		UserDetails value = new User(customer.getCustomerId(),"admin1", new ArrayList<>());
 		when( userDetailsService.loadUserByUsername("admin")).thenReturn(value);
@@ -78,14 +78,14 @@ public class CustomerServiceImplTest {
 	
 	@Test
 	public void testAddCustomerAlreadyExists() {
-		CustomerDetails customerDetails = new CustomerDetails("Harry", "pass123", "Harry", "Potter");
+		CustomerDetails customerDetails = new CustomerDetails("Harry", "pass123", "Harry", "Potter","IND");
 		when(customerRepository.findById("Harry")).thenReturn(Optional.of(customerDetails));
 		assertEquals(HttpStatus.NOT_ACCEPTABLE, customerServiceImpl.addCustomer(customerDetails).getStatus());
 	}
 	
 	@Test
 	public void testAddCustomerNew() {
-		CustomerDetails customerDetails = new CustomerDetails("Jack", "pass123", "Jack", "Hertz");
+		CustomerDetails customerDetails = new CustomerDetails("Jack", "pass123", "Jack", "Hertz","IND");
 		when(customerRepository.findById("Jack")).thenThrow(new NoSuchElementException());
 		assertEquals(HttpStatus.OK, customerServiceImpl.addCustomer(customerDetails).getStatus());
 	}
