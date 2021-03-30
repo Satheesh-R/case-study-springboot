@@ -4,5 +4,6 @@ package com.cognizant.quotesservice.exception;
 public class TokenInvalidExceptionMessageConstants
 {
 	/**Message which will be input for token invalid exception*/
-	public final static String INVALIDMESSAGE = "Token Expired Please Login Again!";
+	private TokenInvalidExceptionMessageConstants() {}
+	public static final String INVALIDMESSAGE = "Token Expired Please Login Again!";
 }

@@ -41,7 +41,7 @@ public class GlobalExceptionHandler {
 	
 	@ExceptionHandler(ConstraintViolationException.class)
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
-	public ResponseEntity<?> constraintValidationException(ConstraintViolationException constraintViolationException)
+	public ResponseEntity<ConstraintErrorResponse> constraintValidationException(ConstraintViolationException constraintViolationException)
 	{
 		List<String> errorMessages = new ArrayList<String>();
 		for(ConstraintViolation<?> constraintViolation:constraintViolationException.getConstraintViolations()) 

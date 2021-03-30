@@ -21,31 +21,28 @@ import com.cognizant.quotesservice.service.QuotesService;
 
 @RestController
 public class QuotesController {
-	
+
 	@Autowired
 	private QuotesService quotesService;
-	
+
 	@PostMapping("/getQuote")
 	public ResponseEntity<Quotes> getQuote(@RequestBody CustomerDetails customerDetails,
-			@RequestHeader("Authorization")String token) throws TokenInvalidException{
-		Quotes quotes = quotesService.getQuotes(customerDetails,token);
-		ResponseEntity<Quotes> response = new ResponseEntity<Quotes>(quotes, HttpStatus.OK);
-		return response;
+			@RequestHeader("Authorization") String token) throws TokenInvalidException {
+		Quotes quotes = quotesService.getQuotes(customerDetails, token);
+		return new ResponseEntity<Quotes>(quotes, HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/saveQuote")
 	public ResponseEntity<Message> saveQuote(@RequestBody CustomerPersonalDetails customerPersonalDetails,
-			@RequestHeader("Authorization") String token) throws TokenInvalidException{
+			@RequestHeader("Authorization") String token) throws TokenInvalidException {
 		Message message = quotesService.saveQuote(customerPersonalDetails, token);
-		ResponseEntity<Message> response = new ResponseEntity<Message>(message,HttpStatus.OK);
-		return response;
+		return new ResponseEntity<Message>(message, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/getAllQuote")
-	public ResponseEntity<List<QuoteDetails>> getAllQuotes(@RequestHeader("Authorization") final String token) throws TokenInvalidException{
+	public ResponseEntity<List<QuoteDetails>> getAllQuotes(@RequestHeader("Authorization") final String token)
+			throws TokenInvalidException {
 		List<QuoteDetails> quotesList = quotesService.getAllQuotesByUserid(token);
-		ResponseEntity<List<QuoteDetails>> response = new ResponseEntity<List<QuoteDetails>>(quotesList,
-				HttpStatus.OK);
-		return response;
+		return new ResponseEntity<List<QuoteDetails>>(quotesList, HttpStatus.OK);
 	}
 }

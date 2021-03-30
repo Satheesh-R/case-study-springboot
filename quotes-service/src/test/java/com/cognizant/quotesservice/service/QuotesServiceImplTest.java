@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -48,7 +49,7 @@ public class QuotesServiceImplTest {
 		ResponseEntity<ValidationResponse> response = new ResponseEntity<ValidationResponse>(validationResponse, HttpStatus.OK);
 		when(authenticationProxy.validateUser("Bearer token")).thenReturn(response);
 		when(quotesMasterRepository.getQuoteAmount(customerDetails.getAge())).thenReturn(amount);
-		assertEquals(quotesServiceImpl.getQuotes(customerDetails, "Bearer token").getQuoteAmount(), quotes.getQuoteAmount());
+		assertEquals(quotes.getQuoteAmount(),quotesServiceImpl.getQuotes(customerDetails, "Bearer token").getQuoteAmount());
 	}
 	
 	@Test
@@ -59,7 +60,7 @@ public class QuotesServiceImplTest {
 		ResponseEntity<ValidationResponse> response = new ResponseEntity<ValidationResponse>(validationResponse, HttpStatus.OK);
 		when(authenticationProxy.validateUser("Bearer token")).thenReturn(response);
 		when(quotesMasterRepository.getQuoteAmount(customerDetails.getAge())).thenReturn(amount);
-		assertEquals(quotesServiceImpl.getQuotes(customerDetails, "Bearer token").getQuoteAmount(), 7290000L);
+		assertEquals(7290000L,quotesServiceImpl.getQuotes(customerDetails, "Bearer token").getQuoteAmount());
 	}
 	
 	@Test
@@ -70,7 +71,7 @@ public class QuotesServiceImplTest {
 		ResponseEntity<ValidationResponse> response = new ResponseEntity<ValidationResponse>(validationResponse, HttpStatus.OK);
 		when(authenticationProxy.validateUser("Bearer token")).thenReturn(response);
 		when(quotesMasterRepository.getQuoteAmount(customerDetails.getAge())).thenReturn(amount);
-		assertEquals(quotesServiceImpl.getQuotes(customerDetails, "Bearer token").getQuoteAmount(), 10240000L);
+		assertEquals(10240000L,quotesServiceImpl.getQuotes(customerDetails, "Bearer token").getQuoteAmount());
 	}
 	
 	@Test
@@ -81,7 +82,7 @@ public class QuotesServiceImplTest {
 		ResponseEntity<ValidationResponse> response = new ResponseEntity<ValidationResponse>(validationResponse, HttpStatus.OK);
 		when(authenticationProxy.validateUser("Bearer token")).thenReturn(response);
 		when(quotesMasterRepository.getQuoteAmount(customerDetails.getAge())).thenReturn(amount);
-		assertEquals(quotesServiceImpl.getQuotes(customerDetails, "Bearer token").getQuoteAmount(), 14700000L);
+		assertEquals(14700000L,quotesServiceImpl.getQuotes(customerDetails, "Bearer token").getQuoteAmount());
 	}
 	
 	@Test
@@ -144,7 +145,7 @@ public class QuotesServiceImplTest {
 		ResponseEntity<ValidationResponse> response = new ResponseEntity<ValidationResponse>(validationResponse, HttpStatus.OK);
 		when(quotesRepository.findAllByUsername("Harry")).thenReturn(quotesDetailsList);
 		when(authenticationProxy.validateUser("Bearer token")).thenReturn(response);
-		assertEquals(quotesServiceImpl.getAllQuotesByUserid("Bearer token").size(), 0);
+		assertEquals(0,quotesServiceImpl.getAllQuotesByUserid("Bearer token").size());
 	}
 	
 	@Test
@@ -168,5 +169,19 @@ public class QuotesServiceImplTest {
 		when(quotesRepository.findAllByUsername("Harry")).thenReturn(quotesDetailsList);
 		when(authenticationProxy.validateUser("Bearer token")).thenReturn(response);
 		assertThrows(TokenInvalidException.class,() -> quotesServiceImpl.getAllQuotesByUserid("Bearer token"));
+	}
+	
+	@Test
+	public void getAllQuotesByUseridFallbackTest() throws TokenInvalidException{
+		List<QuoteDetails> fallBackQuotes = Arrays.asList(new QuoteDetails("fallBackuser", 
+				"fallBackFirstname", "fallBackLasstname", "fallBackGender", 12, "fallBackEmail", 
+				9876543210L, 100L, null));
+		assertEquals(fallBackQuotes.get(0).getAge(), quotesServiceImpl.getAllQuotesByUseridFallback("token").get(0).getAge());
+	}
+	
+	@Test
+	public void getQuotesFallbackTest() throws TokenInvalidException{
+		CustomerDetails customerDetails = new CustomerDetails(10L, "NO", "NO");
+		assertEquals(123456789L, quotesServiceImpl.getQuotesFallback(customerDetails, "token").getQuoteAmount());
 	}
 }

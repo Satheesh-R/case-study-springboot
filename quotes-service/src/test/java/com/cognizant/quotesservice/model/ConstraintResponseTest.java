@@ -18,13 +18,13 @@ public class ConstraintResponseTest {
 	public void testStatus() 
 	{
 		constraintErrorResponse.setHttpStatus(HttpStatus.ACCEPTED);
-		assertEquals(constraintErrorResponse.getHttpStatus(), HttpStatus.ACCEPTED);
+		assertEquals(HttpStatus.ACCEPTED,constraintErrorResponse.getHttpStatus());
 	}
 
 	@Test
 	public void testDate() {
 		constraintErrorResponse.setTimestamp(LocalDateTime.MIN);
-		assertEquals(constraintErrorResponse.getTimestamp(), LocalDateTime.MIN);
+		assertEquals(LocalDateTime.MIN,constraintErrorResponse.getTimestamp());
 	}
 	
 	@Test
