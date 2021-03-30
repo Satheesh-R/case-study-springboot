@@ -54,7 +54,7 @@ public class AuthenticationControllerTest {
 	@Test
 	public void testHealthCheckup() {
 		ResponseEntity<?> healthCheckUp=authenticationController.healthCheckup();
-		assertEquals(healthCheckUp.getStatusCodeValue(), 200);
+		assertEquals(200,healthCheckUp.getStatusCodeValue());
 	}
 
 	@Test

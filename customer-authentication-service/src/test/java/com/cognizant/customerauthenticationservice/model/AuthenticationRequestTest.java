@@ -13,14 +13,14 @@ public class AuthenticationRequestTest {
 	public void passwordTest() 
 	{
 		authenticationRequest2.setPassword("Hi");
-		assertEquals(authenticationRequest2.getPassword(), "Hi");
+		assertEquals( "Hi",authenticationRequest2.getPassword());
 	}
 	
 	@Test
 	public void usernameTest() 
 	{
 		authenticationRequest2.setUsername("Hi");
-		assertEquals(authenticationRequest2.getUsername(), "Hi");
+		assertEquals( "Hi",authenticationRequest2.getUsername());
 	}
 	
 	@Test

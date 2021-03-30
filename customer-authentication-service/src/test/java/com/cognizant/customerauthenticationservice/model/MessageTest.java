@@ -15,18 +15,18 @@ public class MessageTest {
 	@Test
 	public void testStatus() {
 		responseOne.setStatus(HttpStatus.OK);
-		assertEquals(responseOne.getStatus(), HttpStatus.OK);
+		assertEquals(HttpStatus.OK,responseOne.getStatus());
 	}
 
 	@Test
 	public void testDate() {
 		responseOne.setTimestamp(LocalDateTime.MAX);
-		assertEquals(responseOne.getTimestamp(), LocalDateTime.MAX);
+		assertEquals(LocalDateTime.MAX,responseOne.getTimestamp());
 	}
 
 	@Test
 	public void testMsg() {
 		responseOne.setMessage("Testing");
-		assertEquals(responseOne.getMessage(), "Testing");
+		assertEquals("Testing",responseOne.getMessage());
 	}
 }

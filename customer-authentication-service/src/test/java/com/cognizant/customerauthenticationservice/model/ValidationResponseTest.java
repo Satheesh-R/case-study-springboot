@@ -11,13 +11,13 @@ public class ValidationResponseTest {
 	@Test
 	public void testUserName() {
 		validationResponse.setUsername("Agent1");
-		assertEquals(validationResponse.getUsername(), "Agent1");
+		assertEquals("Agent1",validationResponse.getUsername());
 	}
 
 	@Test
 	public void testIsvalid() {
 		validationResponse.setIsValid(true);
-		assertEquals(validationResponse.getIsValid(), true);
+		assertEquals(true,validationResponse.getIsValid());
 	}
 
 }

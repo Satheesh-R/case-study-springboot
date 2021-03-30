@@ -28,7 +28,7 @@ public class AuthenticationController
 	
 	@ApiOperation(value = "Health check end point",response = ResponseEntity.class)
 	@GetMapping(path = "/health")
-	public ResponseEntity<?> healthCheckup() 
+	public ResponseEntity<String> healthCheckup() 
 	{
 		log.info("INSIDE HEALTH CHECK");
 		log.info("END OF HEALTH CHECK");

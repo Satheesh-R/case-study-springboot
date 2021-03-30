@@ -86,6 +86,7 @@ public class JwtUtil {
 	public Boolean validateToken(String token) {
 		log.info("INSIDE VALIDATE TOKEN");
 		try {
+			Jwts.parser().isSigned(token);
 			Jwts.parser().setSigningKey(secretkey).parse(token).getBody();
 			log.info("END OF VALIDATE TOKEN");	
 			return true;

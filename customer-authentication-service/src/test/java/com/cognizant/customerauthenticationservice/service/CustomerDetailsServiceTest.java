@@ -15,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.cognizant.customerauthenticationservice.model.CustomerDetails;
 
 @SpringBootTest(classes = CustomerDetailsServiceTest.class)
-public class CustomerDetailsServiceTest {
+class CustomerDetailsServiceTest {
 	
 	@InjectMocks
 	private CustomerDetailsService customerDetailsService;
@@ -24,7 +24,7 @@ public class CustomerDetailsServiceTest {
 	private CustomerService customerService;
 	
 	@Test
-	public void testLoadUserName() {
+    void testLoadUserName() {
 		CustomerDetails customerDetails = new CustomerDetails("Harry","pass123","Harry","Potter","IND");
 		UserDetails value = new User(customerDetails.getCustomerId(),customerDetails.getPassword(), new ArrayList<>());
 		when(customerService.findByUsername("Harry")).thenReturn(customerDetails);

@@ -63,7 +63,7 @@ public class CustomerServiceImpl implements CustomerService {
 		log.info("INSIDE VALIDATE USER");
 		String jwt = token.substring(7);
 		ValidationResponse validationResponse = new ValidationResponse();
-		if(jwtUtil.validateToken(jwt)) 
+		if(jwtUtil.validateToken(jwt) != null && jwtUtil.validateToken(jwt)) 
 		{
 			validationResponse.setUsername(jwtUtil.extractUsername(jwt));
 			validationResponse.setIsValid(true);
