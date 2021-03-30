@@ -25,6 +25,7 @@ import com.cognizant.portal.model.CustomerRegistrationDetails;
 import com.cognizant.portal.model.Message;
 import com.cognizant.portal.model.QuoteDetails;
 import com.cognizant.portal.model.Quotes;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @Service
 public class PortalServiceImpl {
@@ -117,6 +118,7 @@ public class PortalServiceImpl {
 			return "redirect:/login";
 		}
 	}
+	@HystrixCommand(fallbackMethod = "getQuoteResultFallback")
 	public String getQuoteResult(HttpSession httpSession,ModelMap modelMap,CustomerDetails customerDetails) {
 		String jwt = (String) httpSession.getAttribute("token");
 		Quotes quotes;
@@ -130,7 +132,6 @@ public class PortalServiceImpl {
 			}
 			catch (Exception exception) 
 			{
-				exception.printStackTrace();
 				modelMap.addAttribute("loginMessage", "Please login!");
 				return "/login";
 			}
@@ -144,6 +145,19 @@ public class PortalServiceImpl {
 		}
 	}
 	
+	public String getQuoteResultFallback(HttpSession httpSession,ModelMap modelMap,CustomerDetails customerDetails) {
+		String jwt = (String) httpSession.getAttribute("token");
+		if(jwt != null) {
+			Quotes quotes = new Quotes(9876543210L, 1);
+			modelMap.addAttribute("quote", quotes);
+			modelMap.addAttribute("age", customerDetails.getAge());
+			return "quoteresult";
+		}
+		else {
+			modelMap.addAttribute("loginMessage", "Please login!");
+			return "redirect:/login";
+		}
+	}
 	public String getSubmitQuoteForm(HttpSession httpSession, ModelMap modelMap,Quotes quotes) {
 		String jwt = (String) httpSession.getAttribute("token");
 		if(jwt != null) {

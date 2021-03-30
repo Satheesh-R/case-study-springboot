@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 
 import com.cognizant.portal.model.CustomerDetails;
-import com.cognizant.portal.model.CustomerDetailsProxy;
 import com.cognizant.portal.model.CustomerPersonalDetails;
 import com.cognizant.portal.model.Message;
 import com.cognizant.portal.model.QuoteDetails;
