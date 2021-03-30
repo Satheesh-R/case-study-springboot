@@ -150,6 +150,7 @@ h1, h2, h3, h4, h5, h6 {
 		<div class='form'>
 			<form method="POST" model="AuthenticationRequest" name="loginForm"
 				action="/authenticate" onsubmit="return validate()">
+				<b><p class="text-danger">${loginMessage}</p></b>
 				<div class="form-group">
 					<label for="exampleInputEmail1">Username</label> <input type="text"
 						class="form-control" id="userId" placeholder="Username"
