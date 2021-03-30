@@ -15,8 +15,8 @@ import com.cognizant.customerauthenticationservice.model.Message;
 import lombok.extern.slf4j.Slf4j;
 
 /**Class to handle all the exceptions*/
-@RestControllerAdvice
 @Slf4j
+@RestControllerAdvice
 public class GlobalExceptionHandler{
 	/**
 	 * @param usernameNotFoundException instance of UsernameNotFoundException

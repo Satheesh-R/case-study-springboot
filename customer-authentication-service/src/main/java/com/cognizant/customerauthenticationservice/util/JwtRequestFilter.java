@@ -22,8 +22,8 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureException;
 import lombok.extern.slf4j.Slf4j;
 
-@Component
 @Slf4j
+@Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
 	/**JWT utility class which is used to build and parse JWT */

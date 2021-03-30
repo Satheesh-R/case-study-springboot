@@ -20,8 +20,8 @@ import com.cognizant.customerauthenticationservice.util.JwtUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Service
 @Slf4j
+@Service
 public class CustomerServiceImpl implements CustomerService {
 	
 	@Autowired
