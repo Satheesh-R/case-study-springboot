@@ -8,10 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class QuotesServiceApplicationTests {
 
-	@Test
-	void contextLoads() {
-		//QuotesServiceApplication.main(new String[] {});
-		assertTrue(true);
-	}
+//	@Test
+//	void contextLoads() {
+//		//QuotesServiceApplication.main(new String[] {});
+//		assertTrue(true);
+//	}
 
 }
