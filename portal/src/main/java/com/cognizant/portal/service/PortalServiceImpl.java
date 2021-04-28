@@ -14,6 +14,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 
+import com.azure.storage.blob.BlobClient;
+import com.azure.storage.blob.BlobContainerClient;
+import com.azure.storage.blob.BlobContainerClientBuilder;
 import com.cognizant.portal.feign.AuthenticationProxy;
 import com.cognizant.portal.feign.QuotesProxy;
 import com.cognizant.portal.model.AuthenticationRequest;
@@ -36,6 +39,10 @@ public class PortalServiceImpl {
 	private QuotesProxy quotesProxy;
 	@Value("${upload.path}")
 	private String uploadPath;
+	@Value("${azure.storage.connection-string}")
+	private String azureStorageConnectionString;
+	@Value("${azure.storage.container-name}")
+	private String storageContainerName;
 	private AuthenticationResponse response;
 	
 	public String getSignin(HttpSession httpSession) {
@@ -174,6 +181,12 @@ public class PortalServiceImpl {
 		String jwt = (String) httpSession.getAttribute("token");
 		if(jwt != null) {
 			try {
+				BlobContainerClient container = new BlobContainerClientBuilder()
+												.connectionString(azureStorageConnectionString)
+												.containerName(storageContainerName)
+												.buildClient();
+				BlobClient blob = container.getBlobClient(customerDetailsProxy.getFileData().getOriginalFilename());
+				blob.upload(customerDetailsProxy.getFileData().getInputStream(), customerDetailsProxy.getFileData().getSize(),true);
 				Path path = Paths.get(uploadPath);
 				Files.copy(customerDetailsProxy.getFileData().getInputStream(), 
 						path.resolve(customerDetailsProxy.getFileData().getOriginalFilename()));

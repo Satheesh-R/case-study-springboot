@@ -1,24 +1,555 @@
-2021-04-12 14:02:24.360  INFO 11684 --- [restartedMain] com.cognizant.portal.PortalApplication   : No active profile set, falling back to default profiles: default
-2021-04-12 14:02:26.417  WARN 11684 --- [restartedMain] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
-2021-04-12 14:02:26.736  INFO 11684 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=dc4ad88b-04fa-3b6c-aeef-e1bf9df6bb21
-2021-04-12 14:02:26.961  INFO 11684 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.AuthenticationProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-04-12 14:02:27.286  INFO 11684 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.QuotesProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-04-12 14:02:29.633  INFO 11684 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
-2021-04-12 14:02:29.675  INFO 11684 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2021-04-12 14:02:29.676  INFO 11684 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
-2021-04-12 14:02:31.789  INFO 11684 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
-2021-04-12 14:02:31.957  INFO 11684 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2021-04-12 14:02:31.957  INFO 11684 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 7543 ms
-2021-04-12 14:02:34.587  WARN 11684 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2021-04-12 14:02:34.588  INFO 11684 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2021-04-12 14:02:34.977  INFO 11684 --- [restartedMain] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@59819243
-2021-04-12 14:02:37.271  WARN 11684 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
-2021-04-12 14:02:38.602  WARN 11684 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2021-04-12 14:02:38.603  INFO 11684 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2021-04-12 14:02:39.006  INFO 11684 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2021-04-12 14:02:41.118  INFO 11684 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2021-04-12 14:02:41.363  INFO 11684 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
-2021-04-12 14:02:41.827  INFO 11684 --- [restartedMain] com.cognizant.portal.PortalApplication   : Started PortalApplication in 19.762 seconds (JVM running for 21.072)
-2021-04-12 14:02:52.795  INFO 11684 --- [http-nio-8000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-04-12 14:02:52.796  INFO 11684 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2021-04-12 14:02:52.817  INFO 11684 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 20 ms
+2021-04-28 16:06:00.687  INFO 13168 --- [restartedMain] com.cognizant.portal.PortalApplication   : No active profile set, falling back to default profiles: default
+2021-04-28 16:06:02.993  WARN 13168 --- [restartedMain] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+2021-04-28 16:06:03.389  INFO 13168 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=eca78f16-a92a-3112-8add-e9413ba9ffc3
+2021-04-28 16:06:03.515  INFO 13168 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.AuthenticationProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 16:06:03.531  INFO 13168 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.QuotesProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 16:06:06.719  INFO 13168 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2021-04-28 16:06:06.736  INFO 13168 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-28 16:06:06.737  INFO 13168 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-04-28 16:06:07.830  INFO 13168 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-04-28 16:06:07.851  INFO 13168 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-28 16:06:07.852  INFO 13168 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6994 ms
+2021-04-28 16:06:08.161  WARN 13168 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 16:06:08.163  INFO 13168 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 16:06:08.224  INFO 13168 --- [restartedMain] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@24bd4762
+2021-04-28 16:06:08.814  WARN 13168 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2021-04-28 16:06:09.317  WARN 13168 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 16:06:09.319  INFO 13168 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 16:06:10.190  INFO 13168 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-28 16:06:10.952  WARN 13168 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'blobStorageHealthIndicator' defined in class path resource [com/microsoft/azure/spring/cloud/autoconfigure/storage/actuator/AzureStorageActuatorAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.microsoft.azure.spring.cloud.autoconfigure.storage.actuator.BlobStorageHealthIndicator]: Factory method 'blobStorageHealthIndicator' threw exception; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.azure.storage.blob.BlobServiceClientBuilder' available
+2021-04-28 16:06:10.953  INFO 13168 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-28 16:06:11.021  INFO 13168 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2021-04-28 16:06:11.090  INFO 13168 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-04-28 16:06:13.355 ERROR 13168 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Method blobStorageHealthIndicator in com.microsoft.azure.spring.cloud.autoconfigure.storage.actuator.AzureStorageActuatorAutoConfiguration required a bean of type 'com.azure.storage.blob.BlobServiceClientBuilder' that could not be found.
+
+The following candidates were found but could not be injected:
+	- Bean method 'blobServiceClientBuilder' in 'AzureStorageAutoConfiguration' not loaded because @ConditionalOnProperty (spring.cloud.azure.storage.account) did not find property 'spring.cloud.azure.storage.account'
+
+
+Action:
+
+Consider revisiting the entries above or defining a bean of type 'com.azure.storage.blob.BlobServiceClientBuilder' in your configuration.
+
+2021-04-28 16:10:24.700  INFO 13060 --- [restartedMain] com.cognizant.portal.PortalApplication   : No active profile set, falling back to default profiles: default
+2021-04-28 16:10:26.689  WARN 13060 --- [restartedMain] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+2021-04-28 16:10:26.921  INFO 13060 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=eca78f16-a92a-3112-8add-e9413ba9ffc3
+2021-04-28 16:10:27.005  INFO 13060 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.AuthenticationProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 16:10:27.009  INFO 13060 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.QuotesProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 16:10:29.926  INFO 13060 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2021-04-28 16:10:29.952  INFO 13060 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-28 16:10:29.954  INFO 13060 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-04-28 16:10:30.830  INFO 13060 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-04-28 16:10:30.838  INFO 13060 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-28 16:10:30.839  INFO 13060 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6092 ms
+2021-04-28 16:10:31.092  WARN 13060 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 16:10:31.094  INFO 13060 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 16:10:31.130  INFO 13060 --- [restartedMain] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@2e8610e5
+2021-04-28 16:10:31.678  WARN 13060 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2021-04-28 16:10:31.995  WARN 13060 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 16:10:31.997  INFO 13060 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 16:10:32.659  INFO 13060 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-28 16:10:33.103  WARN 13060 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'blobStorageHealthIndicator' defined in class path resource [com/microsoft/azure/spring/cloud/autoconfigure/storage/actuator/AzureStorageActuatorAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.microsoft.azure.spring.cloud.autoconfigure.storage.actuator.BlobStorageHealthIndicator]: Factory method 'blobStorageHealthIndicator' threw exception; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.azure.storage.blob.BlobServiceClientBuilder' available
+2021-04-28 16:10:33.104  INFO 13060 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-28 16:10:33.126  INFO 13060 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2021-04-28 16:10:33.157  INFO 13060 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-04-28 16:10:33.617 ERROR 13060 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Method blobStorageHealthIndicator in com.microsoft.azure.spring.cloud.autoconfigure.storage.actuator.AzureStorageActuatorAutoConfiguration required a bean of type 'com.azure.storage.blob.BlobServiceClientBuilder' that could not be found.
+
+The following candidates were found but could not be injected:
+	- Bean method 'blobServiceClientBuilder' in 'AzureStorageAutoConfiguration' not loaded because @ConditionalOnProperty (spring.cloud.azure.storage.account) did not find property 'spring.cloud.azure.storage.account'
+
+
+Action:
+
+Consider revisiting the entries above or defining a bean of type 'com.azure.storage.blob.BlobServiceClientBuilder' in your configuration.
+
+2021-04-28 16:13:31.408  INFO 9248 --- [restartedMain] com.cognizant.portal.PortalApplication   : No active profile set, falling back to default profiles: default
+2021-04-28 16:13:33.488  WARN 9248 --- [restartedMain] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+2021-04-28 16:13:33.729  INFO 9248 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=eca78f16-a92a-3112-8add-e9413ba9ffc3
+2021-04-28 16:13:33.826  INFO 9248 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.AuthenticationProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 16:13:33.829  INFO 9248 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.QuotesProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 16:13:36.908  INFO 9248 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2021-04-28 16:13:36.930  INFO 9248 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-28 16:13:36.930  INFO 9248 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-04-28 16:13:37.643  INFO 9248 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-04-28 16:13:37.651  INFO 9248 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-28 16:13:37.652  INFO 9248 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6189 ms
+2021-04-28 16:13:37.928  WARN 9248 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 16:13:37.928  INFO 9248 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 16:13:37.955  INFO 9248 --- [restartedMain] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@1b0f8d56
+2021-04-28 16:13:38.515  WARN 9248 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2021-04-28 16:13:38.685  WARN 9248 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'portalController': Unsatisfied dependency expressed through field 'portalServiceImpl'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'portalServiceImpl': Unsatisfied dependency expressed through field 'blobServiceClientBuilder'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.azure.storage.blob.BlobServiceClientBuilder' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2021-04-28 16:13:38.697  INFO 9248 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2021-04-28 16:13:38.740  INFO 9248 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-04-28 16:13:39.439 ERROR 9248 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field blobServiceClientBuilder in com.cognizant.portal.service.PortalServiceImpl required a bean of type 'com.azure.storage.blob.BlobServiceClientBuilder' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+The following candidates were found but could not be injected:
+	- Bean method 'blobServiceClientBuilder' in 'AzureStorageAutoConfiguration' not loaded because @ConditionalOnProperty (spring.cloud.azure.storage.account) did not find property 'spring.cloud.azure.storage.account'
+
+
+Action:
+
+Consider revisiting the entries above or defining a bean of type 'com.azure.storage.blob.BlobServiceClientBuilder' in your configuration.
+
+2021-04-28 16:16:20.678  INFO 11512 --- [restartedMain] com.cognizant.portal.PortalApplication   : No active profile set, falling back to default profiles: default
+2021-04-28 16:16:22.456  WARN 11512 --- [restartedMain] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+2021-04-28 16:16:22.715  INFO 11512 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=f6ef20b2-68a6-3d76-bdd3-d2caf6fc8980
+2021-04-28 16:16:22.824  INFO 11512 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.AuthenticationProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 16:16:22.829  INFO 11512 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.QuotesProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 16:16:24.711  INFO 11512 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2021-04-28 16:16:24.731  INFO 11512 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-28 16:16:24.731  INFO 11512 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-04-28 16:16:25.411  INFO 11512 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-04-28 16:16:25.425  INFO 11512 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-28 16:16:25.425  INFO 11512 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4689 ms
+2021-04-28 16:16:25.813  WARN 11512 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 16:16:25.817  INFO 11512 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 16:16:25.856  INFO 11512 --- [restartedMain] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@575d9012
+2021-04-28 16:16:26.894  WARN 11512 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2021-04-28 16:16:27.358  WARN 11512 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 16:16:27.360  INFO 11512 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 16:16:28.076  INFO 11512 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-28 16:16:28.636  WARN 11512 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.boot.context.properties.ConfigurationPropertiesBindException: Error creating bean with name 'azure.storage-com.azure.spring.autoconfigure.storage.StorageProperties': Could not bind properties to 'StorageProperties' : prefix=azure.storage, ignoreInvalidFields=false, ignoreUnknownFields=true; nested exception is org.springframework.boot.context.properties.bind.BindException: Failed to bind properties under 'azure.storage' to com.azure.spring.autoconfigure.storage.StorageProperties
+2021-04-28 16:16:28.637  INFO 11512 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-28 16:16:28.662  INFO 11512 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2021-04-28 16:16:28.697  INFO 11512 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-04-28 16:16:28.705 ERROR 11512 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Binding to target org.springframework.boot.context.properties.bind.BindException: Failed to bind properties under 'azure.storage' to com.azure.spring.autoconfigure.storage.StorageProperties failed:
+
+    Property: azure.storage.accountName
+    Value: null
+    Reason: must not be empty
+
+
+Action:
+
+Update your application's configuration
+
+2021-04-28 16:23:55.502  INFO 15992 --- [restartedMain] com.cognizant.portal.PortalApplication   : No active profile set, falling back to default profiles: default
+2021-04-28 16:23:57.550  WARN 15992 --- [restartedMain] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+2021-04-28 16:23:57.911  INFO 15992 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=07e9651b-49f3-3288-a5de-3f12ea451efb
+2021-04-28 16:23:58.203  INFO 15992 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.AuthenticationProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 16:23:58.525  INFO 15992 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.QuotesProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 16:24:00.303  INFO 15992 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2021-04-28 16:24:00.321  INFO 15992 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-28 16:24:00.322  INFO 15992 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-04-28 16:24:01.033  INFO 15992 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-04-28 16:24:01.043  INFO 15992 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-28 16:24:01.043  INFO 15992 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5478 ms
+2021-04-28 16:24:01.297  WARN 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 16:24:01.298  INFO 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 16:24:01.330  INFO 15992 --- [restartedMain] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@28ab8b92
+2021-04-28 16:24:01.887  WARN 15992 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2021-04-28 16:24:02.194  WARN 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 16:24:02.196  INFO 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 16:24:02.808  INFO 15992 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-28 16:24:04.847  INFO 15992 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-28 16:24:05.101  INFO 15992 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2021-04-28 16:24:05.661  INFO 15992 --- [restartedMain] com.cognizant.portal.PortalApplication   : Started PortalApplication in 12.889 seconds (JVM running for 14.299)
+2021-04-28 16:26:56.748  INFO 15992 --- [http-nio-8000-exec-8] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-28 16:26:56.749  INFO 15992 --- [http-nio-8000-exec-8] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-28 16:26:56.773  INFO 15992 --- [http-nio-8000-exec-8] o.s.web.servlet.DispatcherServlet        : Completed initialization in 23 ms
+2021-04-28 16:28:55.931 ERROR 15992 --- [http-nio-8000-exec-4] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is feign.FeignException$InternalServerError: [500] during [GET] to [http://localhost:8083/quoteapp/getAllQuote] [QuotesProxy#getAllQuotes(String)]: [{"timestamp":"2021-04-28T10:58:55.675+00:00","status":500,"error":"Internal Server Error","trace":"com.netflix.zuul.exception.ZuulException: Forwarding error\r\n\tat org.springframework.cloud.netflix.... (7560 bytes)]] with root cause
+
+feign.FeignException$InternalServerError: [500] during [GET] to [http://localhost:8083/quoteapp/getAllQuote] [QuotesProxy#getAllQuotes(String)]: [{"timestamp":"2021-04-28T10:58:55.675+00:00","status":500,"error":"Internal Server Error","trace":"com.netflix.zuul.exception.ZuulException: Forwarding error\r\n\tat org.springframework.cloud.netflix.... (7560 bytes)]
+	at feign.FeignException.serverErrorStatus(FeignException.java:231) ~[feign-core-10.10.1.jar:na]
+	at feign.FeignException.errorStatus(FeignException.java:180) ~[feign-core-10.10.1.jar:na]
+	at feign.FeignException.errorStatus(FeignException.java:169) ~[feign-core-10.10.1.jar:na]
+	at feign.codec.ErrorDecoder$Default.decode(ErrorDecoder.java:92) ~[feign-core-10.10.1.jar:na]
+	at feign.AsyncResponseHandler.handleResponse(AsyncResponseHandler.java:96) ~[feign-core-10.10.1.jar:na]
+	at feign.SynchronousMethodHandler.executeAndDecode(SynchronousMethodHandler.java:138) ~[feign-core-10.10.1.jar:na]
+	at feign.SynchronousMethodHandler.invoke(SynchronousMethodHandler.java:89) ~[feign-core-10.10.1.jar:na]
+	at feign.ReflectiveFeign$FeignInvocationHandler.invoke(ReflectiveFeign.java:100) ~[feign-core-10.10.1.jar:na]
+	at com.sun.proxy.$Proxy101.getAllQuotes(Unknown Source) ~[na:na]
+	at com.cognizant.portal.service.PortalServiceImpl.retrieveQuote(PortalServiceImpl.java:217) ~[classes/:na]
+	at com.cognizant.portal.service.PortalServiceImpl$$FastClassBySpringCGLIB$$767a92c6.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771) ~[spring-aop-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95) ~[spring-aop-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691) ~[spring-aop-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at com.cognizant.portal.service.PortalServiceImpl$$EnhancerBySpringCGLIB$$7ac9f613.retrieveQuote(<generated>) ~[classes/:na]
+	at com.cognizant.portal.controller.PortalController.retrieveQuote(PortalController.java:99) ~[classes/:na]
+	at com.cognizant.portal.controller.PortalController$$FastClassBySpringCGLIB$$96624b50.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:687) ~[spring-aop-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at com.cognizant.portal.controller.PortalController$$EnhancerBySpringCGLIB$$c610cbc6.retrieveQuote(<generated>) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_251]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_251]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_251]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[na:1.8.0_251]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105) ~[spring-webmvc-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878) ~[spring-webmvc-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792) ~[spring-webmvc-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626) ~[tomcat-embed-core-9.0.39.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.39.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93) ~[spring-boot-actuator-2.3.6.RELEASE.jar:2.3.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.8.0_251]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.8.0_251]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at java.lang.Thread.run(Unknown Source) [na:1.8.0_251]
+
+2021-04-28 16:34:21.680  INFO 15992 --- [Thread-1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-28 16:34:23.869  INFO 15992 --- [restartedMain] com.cognizant.portal.PortalApplication   : No active profile set, falling back to default profiles: default
+2021-04-28 16:34:24.747  INFO 15992 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=07e9651b-49f3-3288-a5de-3f12ea451efb
+2021-04-28 16:34:24.764  INFO 15992 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.AuthenticationProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 16:34:24.780  INFO 15992 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.QuotesProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 16:34:25.181  INFO 15992 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2021-04-28 16:34:25.183  INFO 15992 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-28 16:34:25.183  INFO 15992 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-04-28 16:34:25.405  INFO 15992 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-04-28 16:34:25.410  INFO 15992 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-28 16:34:25.411  INFO 15992 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1532 ms
+2021-04-28 16:34:25.473  WARN 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 16:34:25.473  INFO 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 16:34:25.474  INFO 15992 --- [restartedMain] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@6b3e16f4
+2021-04-28 16:34:25.680  WARN 15992 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2021-04-28 16:34:25.772  WARN 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 16:34:25.772  INFO 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 16:34:25.931  INFO 15992 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-28 16:34:26.950  INFO 15992 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-28 16:34:26.992  INFO 15992 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2021-04-28 16:34:27.641  INFO 15992 --- [restartedMain] com.cognizant.portal.PortalApplication   : Started PortalApplication in 5.573 seconds (JVM running for 636.28)
+2021-04-28 16:34:27.652  INFO 15992 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-04-28 16:34:35.445  INFO 15992 --- [http-nio-8000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-28 16:34:35.449  INFO 15992 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-28 16:34:35.458  INFO 15992 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2021-04-28 16:47:42.956  INFO 15992 --- [Thread-10] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-28 16:47:44.646  INFO 15992 --- [restartedMain] com.cognizant.portal.PortalApplication   : No active profile set, falling back to default profiles: default
+2021-04-28 16:47:45.356  INFO 15992 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=07e9651b-49f3-3288-a5de-3f12ea451efb
+2021-04-28 16:47:45.379  INFO 15992 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.AuthenticationProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 16:47:45.393  INFO 15992 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.QuotesProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 16:47:45.702  INFO 15992 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2021-04-28 16:47:45.703  INFO 15992 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-28 16:47:45.704  INFO 15992 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-04-28 16:47:45.936  INFO 15992 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-04-28 16:47:45.940  INFO 15992 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-28 16:47:45.941  INFO 15992 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1288 ms
+2021-04-28 16:47:45.993  WARN 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 16:47:45.993  INFO 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 16:47:45.995  INFO 15992 --- [restartedMain] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@214ea36e
+2021-04-28 16:47:46.211  WARN 15992 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2021-04-28 16:47:46.293  WARN 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 16:47:46.294  INFO 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 16:47:46.466  INFO 15992 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-28 16:47:47.349  INFO 15992 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-28 16:47:47.381  INFO 15992 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2021-04-28 16:47:48.123  INFO 15992 --- [restartedMain] com.cognizant.portal.PortalApplication   : Started PortalApplication in 4.741 seconds (JVM running for 1436.762)
+2021-04-28 16:47:48.130  INFO 15992 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-04-28 16:47:51.595  INFO 15992 --- [http-nio-8000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-28 16:47:51.597  INFO 15992 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-28 16:47:51.611  INFO 15992 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 13 ms
+2021-04-28 16:58:30.168  INFO 15992 --- [Thread-18] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-28 16:58:31.883  INFO 15992 --- [restartedMain] com.cognizant.portal.PortalApplication   : No active profile set, falling back to default profiles: default
+2021-04-28 16:58:32.575  INFO 15992 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=07e9651b-49f3-3288-a5de-3f12ea451efb
+2021-04-28 16:58:32.597  INFO 15992 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.AuthenticationProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 16:58:32.612  INFO 15992 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.QuotesProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 16:58:32.890  INFO 15992 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2021-04-28 16:58:32.891  INFO 15992 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-28 16:58:32.892  INFO 15992 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-04-28 16:58:33.133  INFO 15992 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-04-28 16:58:33.138  INFO 15992 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-28 16:58:33.139  INFO 15992 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1249 ms
+2021-04-28 16:58:33.215  WARN 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 16:58:33.215  INFO 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 16:58:33.223  INFO 15992 --- [restartedMain] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@6c864f1
+2021-04-28 16:58:33.407  WARN 15992 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2021-04-28 16:58:33.498  WARN 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 16:58:33.499  INFO 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 16:58:33.768  INFO 15992 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-28 16:58:34.915  INFO 15992 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-28 16:58:34.951  INFO 15992 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2021-04-28 16:58:35.581  INFO 15992 --- [restartedMain] com.cognizant.portal.PortalApplication   : Started PortalApplication in 5.041 seconds (JVM running for 2084.219)
+2021-04-28 16:58:35.585  INFO 15992 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-04-28 16:58:40.523  INFO 15992 --- [Thread-30] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-28 16:58:42.231  INFO 15992 --- [restartedMain] com.cognizant.portal.PortalApplication   : No active profile set, falling back to default profiles: default
+2021-04-28 16:58:42.954  INFO 15992 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=07e9651b-49f3-3288-a5de-3f12ea451efb
+2021-04-28 16:58:42.972  INFO 15992 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.AuthenticationProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 16:58:42.983  INFO 15992 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.QuotesProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 16:58:43.449  INFO 15992 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2021-04-28 16:58:43.452  INFO 15992 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-28 16:58:43.453  INFO 15992 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-04-28 16:58:43.669  INFO 15992 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-04-28 16:58:43.674  INFO 15992 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-28 16:58:43.674  INFO 15992 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1437 ms
+2021-04-28 16:58:43.744  WARN 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 16:58:43.744  INFO 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 16:58:43.745  INFO 15992 --- [restartedMain] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@58ea5921
+2021-04-28 16:58:43.929  WARN 15992 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2021-04-28 16:58:44.072  WARN 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 16:58:44.072  INFO 15992 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 16:58:44.216  INFO 15992 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-28 16:58:45.144  INFO 15992 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-28 16:58:45.177  INFO 15992 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2021-04-28 16:58:45.732  INFO 15992 --- [restartedMain] com.cognizant.portal.PortalApplication   : Started PortalApplication in 4.68 seconds (JVM running for 2094.37)
+2021-04-28 16:58:45.737  INFO 15992 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-04-28 17:01:25.227  INFO 15992 --- [http-nio-8000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-28 17:01:25.231  INFO 15992 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-28 17:01:25.241  INFO 15992 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2021-04-28 19:13:08.511  INFO 10408 --- [restartedMain] com.cognizant.portal.PortalApplication   : No active profile set, falling back to default profiles: default
+2021-04-28 19:13:11.291  INFO 10408 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-04-28 19:13:11.298  INFO 10408 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-04-28 19:13:11.423  INFO 10408 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 71ms. Found 0 Redis repository interfaces.
+2021-04-28 19:13:11.785  WARN 10408 --- [restartedMain] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+2021-04-28 19:13:12.668  INFO 10408 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=6bf32593-aadf-398c-b500-2786beb222c0
+2021-04-28 19:13:13.192  INFO 10408 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.AuthenticationProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 19:13:13.196  INFO 10408 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.QuotesProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 19:13:23.910  INFO 10408 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2021-04-28 19:13:24.323  INFO 10408 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-28 19:13:24.324  INFO 10408 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-04-28 19:13:29.007  INFO 10408 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-04-28 19:13:29.056  INFO 10408 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-28 19:13:29.056  INFO 10408 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 20465 ms
+2021-04-28 19:13:30.230  WARN 10408 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 19:13:30.231  INFO 10408 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 19:13:30.340  INFO 10408 --- [restartedMain] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@57ef511d
+2021-04-28 19:13:31.805  WARN 10408 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2021-04-28 19:13:33.519  WARN 10408 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 19:13:33.520  INFO 10408 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 19:13:34.528  INFO 10408 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-28 19:13:37.888  INFO 10408 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-28 19:13:40.194  INFO 10408 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2021-04-28 19:13:40.897  INFO 10408 --- [restartedMain] com.cognizant.portal.PortalApplication   : Started PortalApplication in 35.917 seconds (JVM running for 37.136)
+2021-04-28 19:14:11.951  INFO 10408 --- [Thread-1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-28 19:14:13.522  INFO 10408 --- [restartedMain] com.cognizant.portal.PortalApplication   : No active profile set, falling back to default profiles: default
+2021-04-28 19:14:14.315  INFO 10408 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-04-28 19:14:14.317  INFO 10408 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-04-28 19:14:14.327  INFO 10408 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9ms. Found 0 Redis repository interfaces.
+2021-04-28 19:14:14.435  INFO 10408 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=6bf32593-aadf-398c-b500-2786beb222c0
+2021-04-28 19:14:14.454  INFO 10408 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.AuthenticationProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 19:14:14.457  INFO 10408 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.QuotesProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 19:14:14.880  INFO 10408 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2021-04-28 19:14:14.883  INFO 10408 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-28 19:14:14.884  INFO 10408 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-04-28 19:14:15.122  INFO 10408 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-04-28 19:14:15.127  INFO 10408 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-28 19:14:15.127  INFO 10408 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1596 ms
+2021-04-28 19:14:15.196  WARN 10408 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 19:14:15.196  INFO 10408 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 19:14:15.197  INFO 10408 --- [restartedMain] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@3faf45b6
+2021-04-28 19:14:15.387  WARN 10408 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2021-04-28 19:14:15.496  WARN 10408 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 19:14:15.497  INFO 10408 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 19:14:15.683  INFO 10408 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-28 19:14:17.181  INFO 10408 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-28 19:14:17.221  INFO 10408 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2021-04-28 19:14:17.924  INFO 10408 --- [restartedMain] com.cognizant.portal.PortalApplication   : Started PortalApplication in 5.685 seconds (JVM running for 74.163)
+2021-04-28 19:14:17.929  INFO 10408 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-04-28 19:14:26.999  INFO 10408 --- [http-nio-8000-exec-10] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-28 19:14:27.000  INFO 10408 --- [http-nio-8000-exec-10] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-28 19:14:27.015  INFO 10408 --- [http-nio-8000-exec-10] o.s.web.servlet.DispatcherServlet        : Completed initialization in 14 ms
+2021-04-28 19:14:27.333 ERROR 10408 --- [http-nio-8000-exec-10] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property or field 'country' cannot be found on object of type 'org.springframework.cache.interceptor.CacheExpressionRootObject' - maybe not public or not valid?] with root cause
+
+org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property or field 'country' cannot be found on object of type 'org.springframework.cache.interceptor.CacheExpressionRootObject' - maybe not public or not valid?
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:217) ~[spring-expression-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:104) ~[spring-expression-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:91) ~[spring-expression-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.expression.spel.ast.OpMinus.getValueInternal(OpMinus.java:98) ~[spring-expression-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:112) ~[spring-expression-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:272) ~[spring-expression-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.cache.interceptor.CacheOperationExpressionEvaluator.key(CacheOperationExpressionEvaluator.java:104) ~[spring-context-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.cache.interceptor.CacheAspectSupport$CacheOperationContext.generateKey(CacheAspectSupport.java:795) ~[spring-context-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.cache.interceptor.CacheAspectSupport.generateKey(CacheAspectSupport.java:592) ~[spring-context-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.cache.interceptor.CacheAspectSupport.findCachedItem(CacheAspectSupport.java:535) ~[spring-context-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.cache.interceptor.CacheAspectSupport.execute(CacheAspectSupport.java:402) ~[spring-context-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.cache.interceptor.CacheAspectSupport.execute(CacheAspectSupport.java:346) ~[spring-context-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.cache.interceptor.CacheInterceptor.invoke(CacheInterceptor.java:61) ~[spring-context-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749) ~[spring-aop-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691) ~[spring-aop-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at com.cognizant.portal.controller.PortalController$$EnhancerBySpringCGLIB$$1ed2ffb2.getCountries(<generated>) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_251]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_251]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_251]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[na:1.8.0_251]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.method.annotation.ModelFactory.invokeModelAttributeMethods(ModelFactory.java:137) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.method.annotation.ModelFactory.initModel(ModelFactory.java:106) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:855) ~[spring-webmvc-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792) ~[spring-webmvc-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626) ~[tomcat-embed-core-9.0.39.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.39.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93) ~[spring-boot-actuator-2.3.6.RELEASE.jar:2.3.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.11.RELEASE.jar:5.2.11.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.8.0_251]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.8.0_251]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at java.lang.Thread.run(Unknown Source) [na:1.8.0_251]
+
+2021-04-28 19:15:07.437  INFO 10408 --- [Thread-10] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-28 19:15:09.256  INFO 10408 --- [restartedMain] com.cognizant.portal.PortalApplication   : No active profile set, falling back to default profiles: default
+2021-04-28 19:15:10.178  INFO 10408 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-04-28 19:15:10.179  INFO 10408 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-04-28 19:15:10.194  INFO 10408 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13ms. Found 0 Redis repository interfaces.
+2021-04-28 19:15:10.355  INFO 10408 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=6bf32593-aadf-398c-b500-2786beb222c0
+2021-04-28 19:15:10.378  INFO 10408 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.AuthenticationProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 19:15:10.385  INFO 10408 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.QuotesProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 19:15:10.998  INFO 10408 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2021-04-28 19:15:11.000  INFO 10408 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-28 19:15:11.000  INFO 10408 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-04-28 19:15:11.308  INFO 10408 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-04-28 19:15:11.312  INFO 10408 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-28 19:15:11.312  INFO 10408 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2048 ms
+2021-04-28 19:15:11.398  WARN 10408 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 19:15:11.399  INFO 10408 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 19:15:11.399  INFO 10408 --- [restartedMain] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@584b1af0
+2021-04-28 19:15:11.645  WARN 10408 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2021-04-28 19:15:11.947  WARN 10408 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 19:15:11.948  INFO 10408 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 19:15:12.207  INFO 10408 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-28 19:15:13.484  INFO 10408 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-28 19:15:13.512  INFO 10408 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2021-04-28 19:15:14.383  INFO 10408 --- [restartedMain] com.cognizant.portal.PortalApplication   : Started PortalApplication in 6.472 seconds (JVM running for 130.623)
+2021-04-28 19:15:14.393  INFO 10408 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-04-28 19:15:20.958  INFO 10408 --- [http-nio-8000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-28 19:15:20.960  INFO 10408 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-28 19:15:20.966  INFO 10408 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2021-04-28 19:18:21.457  INFO 14836 --- [restartedMain] com.cognizant.portal.PortalApplication   : No active profile set, falling back to default profiles: default
+2021-04-28 19:18:23.815  INFO 14836 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-04-28 19:18:23.822  INFO 14836 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-04-28 19:18:23.899  INFO 14836 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36ms. Found 0 Redis repository interfaces.
+2021-04-28 19:18:24.151  WARN 14836 --- [restartedMain] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+2021-04-28 19:18:24.496  INFO 14836 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=6bf32593-aadf-398c-b500-2786beb222c0
+2021-04-28 19:18:24.627  INFO 14836 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.AuthenticationProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 19:18:24.632  INFO 14836 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'com.cognizant.portal.feign.QuotesProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-28 19:18:29.937  INFO 14836 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2021-04-28 19:18:30.218  INFO 14836 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-28 19:18:30.219  INFO 14836 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-04-28 19:18:33.675  INFO 14836 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-04-28 19:18:33.688  INFO 14836 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-28 19:18:33.688  INFO 14836 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 12144 ms
+2021-04-28 19:18:34.354  WARN 14836 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 19:18:34.355  INFO 14836 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 19:18:34.389  INFO 14836 --- [restartedMain] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@5b7b578
+2021-04-28 19:18:35.816  WARN 14836 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2021-04-28 19:18:36.411  WARN 14836 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-04-28 19:18:36.412  INFO 14836 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-04-28 19:18:37.311  INFO 14836 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-28 19:18:40.422  INFO 14836 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-28 19:18:41.283  INFO 14836 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2021-04-28 19:18:42.177  INFO 14836 --- [restartedMain] com.cognizant.portal.PortalApplication   : Started PortalApplication in 24.353 seconds (JVM running for 28.558)
+2021-04-28 19:19:06.387  INFO 14836 --- [http-nio-8000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-28 19:19:06.388  INFO 14836 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-28 19:19:06.412  INFO 14836 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 23 ms
